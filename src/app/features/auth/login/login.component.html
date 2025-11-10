@@ -1,0 +1,109 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form">
+  <!-- Selector Email o Teléfono -->
+  <ion-segment formControlName="contactMethod" class="ion-margin-top">
+    <ion-segment-button value="email">
+      <ion-label>Correo</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="phone">
+      <ion-label>Teléfono</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Email -->
+  @if (contactMethod() === 'email') {
+    <div class="auth-input">
+      <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+      <div class="input-wrapper">
+        <input formControlName="email" type="email" placeholder=" " aria-label="Correo electrónico" />
+        <label>Correo electrónico</label>
+      </div>
+      <button type="button" class="clear-btn" (click)="clearControl('email')">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </div>
+
+    @if (form.get('email')?.touched && form.get('email')?.invalid) {
+      <div class="error">
+        <small *ngIf="form.get('email')?.errors?.['required']">El correo es obligatorio</small>
+        <small *ngIf="form.get('email')?.errors?.['email']">Correo inválido</small>
+      </div>
+    }
+  }
+
+  <!-- Teléfono -->
+  @if (contactMethod() === 'phone') {
+    <div class="auth-input">
+      <span class="icon"><ion-icon name="call-outline"></ion-icon></span>
+      <div class="input-wrapper">
+        <input formControlName="phone" type="tel" placeholder=" " aria-label="Teléfono" />
+        <label>Teléfono</label>
+      </div>
+      <button type="button" class="clear-btn" (click)="clearControl('phone')">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </div>
+
+    @if (form.get('phone')?.touched && form.get('phone')?.invalid) {
+      <div class="error">
+        <small *ngIf="form.get('phone')?.errors?.['required']">Teléfono es obligatorio</small>
+        <small *ngIf="form.get('phone')?.errors?.['pattern']">Teléfono inválido</small>
+      </div>
+    }
+  }
+
+  <!-- Password -->
+  <div class="auth-input">
+    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+    <div class="input-wrapper">
+      <input formControlName="password" type="password" placeholder=" " aria-label="Contraseña" />
+      <label>Contraseña</label>
+    </div>
+    <button type="button" class="clear-btn" (click)="clearControl('password')">
+      <ion-icon name="close-circle"></ion-icon>
+    </button>
+  </div>
+
+  @if (form.get('password')?.touched && form.get('password')?.invalid) {
+    <div class="error">
+      <small *ngIf="form.get('password')?.errors?.['required']">La contraseña es obligatoria</small>
+      <small *ngIf="form.get('password')?.errors?.['minlength']">Mínimo 8 caracteres</small>
+    </div>
+  }
+
+  <!-- Server-side errors -->
+  @if (formErrors?.['email']?.[0]) {
+    <div class="error">
+      <small>{{ formErrors?.['email']?.[0] }}</small>
+    </div>
+  }
+  @if (formErrors?.['phone']?.[0]) {
+    <div class="error">
+      <small>{{ formErrors?.['phone']?.[0] }}</small>
+    </div>
+  }
+  @if (error) {
+    <div class="error">
+      <small>{{ error.message }}</small>
+    </div>
+  }
+
+  <!-- Enlace de contraseña olvidada -->
+  <div class="forgot-password-container ion-text-center ion-margin-top">
+    <a routerLink="/forgot-password" class="forgot-password-link">¿Olvidaste tu contraseña?</a>
+  </div>
+
+  <!-- Submit -->
+  <ion-button expand="block" class="login-button ion-margin-top" color="primary" type="submit"
+    [disabled]="isLoading() || form.invalid">
+    <ion-icon slot="start" name="log-in-outline"></ion-icon>
+    <span *ngIf="!isLoading()">Iniciar sesión</span>
+    <ion-spinner *ngIf="isLoading()" name="lines"></ion-spinner>
+  </ion-button>
+</form>
+
+<div class="link-container">
+  <p>
+    ¿No tienes cuenta?
+    <a routerLink="/auth/register" class="link-action">Regístrate aquí</a>
+  </p>
+</div>

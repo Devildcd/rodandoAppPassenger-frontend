@@ -1,0 +1,198 @@
+<ion-content class="page-content">
+  <div class="layout-wrapper">
+    <!-- 50% de ancho: MAPA -->
+    <div class="map-wrapper">
+      <app-base-map
+        [height]="'100%'"
+        [width]="'100%'"
+        center="center"
+        zoom="zoom"
+        mapOptions="mapOptions">
+      </app-base-map>
+    </div>
+
+    <!-- 50% de ancho: DETALLES -->
+    <div class="details-wrapper">
+      <ion-card class="card-trip-overview">
+        <!-- 1. Encabezado de viaje -->
+         <!-- 1. Encabezado de viaje -->
+    <div class="trip-header">
+      <!-- Estado dinámico -->
+      <div class="trip-header">
+  <!-- Estado dinámico -->
+  <div class="trip-status">
+    <ion-icon
+      *ngIf="status === 'Viajando'"
+      name="rocket-outline">
+    </ion-icon>
+    <ion-icon
+      *ngIf="status === 'Esperando'"
+      name="hourglass-outline">
+    </ion-icon>
+    {{ status }}
+  </div>
+</div>
+
+      <!-- Contador de espera -->
+<div class="trip-timer">
+  <ion-icon
+    [name]="elapsed > 10000 ? 'sad-outline' : 'happy-outline'"
+    [style.color]="elapsed > 10000 ? 'gray' : 'var(--ion-color-warning-shade)'">
+  </ion-icon>
+  <span>{{ elapsed | date:'mm:ss' }}</span>
+</div>
+    </div>
+
+        <div class="divider"></div>
+
+<!-- Sección Vehículo con Modelo y Placa arriba, Monto y Botón abajo -->
+<div class="vehicle-info-section">
+  <!-- Fila superior: imagen + texto -->
+  <div class="vehicle-top">
+    <img class="vehicle-photo-lg" src="assets/images/confort.png" alt="Vehículo">
+    <div class="vehicle-text">
+      <div class="vehicle-model">Toyota Prius</div>
+      <div class="vehicle-vm">VM 4562</div>
+    </div>
+  </div>
+  <!-- Fila inferior: monto + botones FAB -->
+<div class="vehicle-bottom">
+  <!-- Monto en efectivo -->
+  <div class="trip-fare">
+    <ion-icon name="cash-outline"></ion-icon>
+    <span>1200.50</span>
+  </div>
+
+  <!-- Grupo de botones -->
+  <div class="action-fabs">
+    <ion-fab-button size="small" class="fab-share">
+      <ion-icon name="arrow-redo"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button size="small" class="fab-panic">
+      <ion-icon name="shield-half"></ion-icon>
+    </ion-fab-button>
+  </div>
+</div>
+</div>
+
+        <!-- 4. Botones de acción: Cancelar y Más detalles -->
+<div class="action-buttons">
+  <ion-button class="btn-cancel" fill="outline">
+    Cancelar
+  </ion-button>
+
+  <ion-button class="btn-details" fill="solid" (click)="openDetailModal()">
+    <!-- <ion-icon slot="start" name="eye-outline"></ion-icon> -->
+    Más detalles
+  </ion-button>
+</div>
+      </ion-card>
+    </div>
+  </div>
+
+  <app-reusable-modal
+  #detailModal
+  [initialBreakpoint]="0.8"
+  [breakpoints]="[0.8, 1]"
+  cssClass="example-reusable-modal"
+>
+  <!-- Contenido dinámico -->
+ <ion-content>
+      <ion-card class="trip-details-card">
+        <ion-card-content>
+          <!-- Header + Resumen -->
+    <div class="trip-details-header">
+      <div class="header-title">
+        <span>Detalles del viaje</span>
+      </div>
+      <div class="trip-summary">
+        <div class="summary-item">
+          <ion-icon name="map"></ion-icon>
+          <span>12.5 km</span>
+        </div>
+        <div class="summary-item">
+          <ion-icon name="time"></ion-icon>
+          <span>≈ 18 min</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direcciones -->
+    <div class="address-wrapper">
+      <!-- Origen -->
+      <div class="address-line">
+        <div class="address-left">
+          <ion-icon name="navigate" class="address-icon origin"></ion-icon>
+          <span class="address-text">Av. Siempre Viva 742, Springfield</span>
+        </div>
+      </div>
+
+      <!-- Línea punteada -->
+      <div class="connector"></div>
+
+      <!-- Destino -->
+      <div class="address-line">
+        <div class="address-left">
+          <ion-icon name="location" class="address-icon destination"></ion-icon>
+          <span class="address-text">Plaza Central, Calle Falsa 123, Springfield</span>
+        </div>
+      </div>
+    </div>
+
+         <!-- Vehículo y servicio seleccionado en línea -->
+<div class="vehicle-service-details">
+  <ion-chip color="primary" class="compact-chip">
+    <ion-icon name="car-outline" slot="start"></ion-icon>
+    <ion-label>Sedán</ion-label>
+  </ion-chip>
+
+  <ion-chip class="compact-chip" color="warning">
+  <ion-icon name="car-sport-outline" slot="start"></ion-icon>
+  <ion-label>Traslado estándar</ion-label>
+  <ion-icon name="checkmark-circle-outline"></ion-icon>
+</ion-chip>
+</div>
+
+<!-- Fila método de pago -->
+<div class="payment-row ion-padding ion-align-items-center ion-justify-content-between" style="display: flex;">
+  <!-- Método seleccionado con ícono y texto -->
+  <div class="payment-selected ion-align-items-center" style="display: flex; gap: 0.5rem; align-items: center;">
+    <ion-icon name="cash" class="payment-icon" aria-label="Método de pago: efectivo"></ion-icon>
+    <span class="payment-label">Efectivo</span>
+    <ion-icon name="chevron-forward-outline" class="chevron" aria-hidden="true"></ion-icon>
+  </div>
+
+  <!-- Monto -->
+  <div class="payment-amount" aria-label="Monto a pagar">
+    $1,200.50
+  </div>
+</div>
+
+
+<!-- Mensajes informativos -->
+<div class="trip-messages" *ngIf="messages?.length">
+  <div
+    class="message-item"
+    *ngFor="let msg of messages"
+    [ngClass]="msg.type"
+  >
+    <ion-icon [name]="msg.icon"></ion-icon>
+    <span>{{ msg.text }}</span>
+  </div>
+</div>
+
+
+<!-- Botón único Aceptar -->
+<div class="action-row">
+  <ion-button expand="block" color="primary" (click)="closeDetailModal()">
+    Aceptar
+  </ion-button>
+</div>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+</app-reusable-modal>
+</ion-content>
+
+
+

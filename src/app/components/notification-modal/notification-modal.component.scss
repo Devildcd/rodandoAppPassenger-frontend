@@ -1,0 +1,28 @@
+.wrapper {
+  text-align: center;
+  padding: 20px;
+  max-width: 300px;
+}
+
+.modal-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: var(--ion-color-warning-shade);
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--ion-color-light-contrast);
+}
+
+.modal-message {
+  font-size: 14px;
+  color: var(--ion-color-dark-shade);
+  margin-bottom: 20px;
+}
+
+.modal-actions ion-button {
+  --border-radius: 8px;
+}

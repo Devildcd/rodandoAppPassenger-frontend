@@ -1,0 +1,67 @@
+<ion-content class="page-content">
+  <div class="layout-wrapper">
+    <!-- 50% de ancho: MAPA -->
+    <div class="map-wrapper">
+      
+    </div>
+
+    <!-- 50% de ancho: DETALLES -->
+    <div class="details-wrapper">
+      <ion-card class="card-trip-overview">
+        <!-- 1. Encabezado de viaje -->
+        <div class="trip-header">
+          <div class="trip-type">
+            <ion-icon name="car-outline"></ion-icon>
+            <span>Standard</span>
+          </div>
+          <div class="trip-info">
+            <div class="info-item">
+              <ion-icon name="time-outline"></ion-icon>
+              <span>4 min</span>
+            </div>
+            <div class="info-separator">·</div>
+            <div class="info-item">
+              <span>VM 4562</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- 2. Detalle de vehículo -->
+        <div class="vehicle-section">
+          <img class="vehicle-photo" src="assets/images/confort.png" alt="Vehículo">
+          <div class="vehicle-data">
+            <div class="vehicle-model">Toyota Prius</div>
+            <div class="vehicle-eta">Llegada en 4 min</div>
+          </div>
+        </div>
+
+        <!-- 3. Información del conductor -->
+        <div class="driver-section">
+          <img class="driver-photo" src="assets/images/user.png" alt="Conductor">
+          <div class="driver-data">
+            <div class="driver-name">Juan Pérez</div>
+            <div class="driver-rating">
+              <ion-icon name="star"></ion-icon>
+              <span>4.8</span>
+            </div>
+          </div>
+          <div class="driver-actions">
+            <ion-button fill="clear">
+              <ion-icon slot="icon-only" name="call-outline"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear">
+              <ion-icon slot="icon-only" name="chatbubble-ellipses-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <!-- 4. Botón Cancelar -->
+        <ion-button class="btn-cancel" fill="outline">
+          Cancel
+        </ion-button>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

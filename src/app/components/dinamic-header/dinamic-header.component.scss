@@ -1,0 +1,14 @@
+.transparent-header,
+.transparent-header ion-toolbar {
+  --background: transparent !important;
+  box-shadow: none !important;
+}
+
+.centered-title {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+}

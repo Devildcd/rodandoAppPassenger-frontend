@@ -1,0 +1,13 @@
+ <ion-modal
+      #modal
+      [initialBreakpoint]="initialBreakpoint"
+      [breakpoints]="breakpoints"
+      handleBehavior="cycle"
+      [presentingElement]="presentingElement"
+      [cssClass]="cssClass"
+    >
+      <ng-template>
+        <!-- Aquí irá TODO lo que el padre proyecte -->
+        <ng-content></ng-content>
+      </ng-template>
+    </ion-modal>

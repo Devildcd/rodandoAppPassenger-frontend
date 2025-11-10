@@ -1,0 +1,97 @@
+<ion-content>
+  <ion-card class="trip-details-card">
+    <ion-card-content>
+      <!-- Header + Resumen -->
+      <div class="trip-details-header">
+        <div class="header-title">
+          <span>Detalles del viaje</span>
+        </div>
+        <div class="trip-summary">
+          <div class="summary-item">
+            <ion-icon name="map"></ion-icon>
+            <span>{{ vm().distanceText }}</span>
+          </div>
+          <div class="summary-item">
+            <ion-icon name="time"></ion-icon>
+            <span>{{ vm().durationText }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="address-wrapper">
+        <!-- Origen -->
+        <div class="address-line">
+          <div class="address-left">
+            <ion-icon name="navigate" class="address-icon origin"></ion-icon>
+            <span class="address-text">{{ vm().originLabel }}</span>
+          </div>
+        </div>
+
+        <!-- Línea punteada -->
+        <div class="connector"></div>
+
+        <!-- Destino -->
+        <div class="address-line">
+          <div class="address-left">
+            <ion-icon name="location" class="address-icon destination"></ion-icon>
+            <span class="address-text">{{ vm().destinationLabel }}</span>
+          </div>
+        </div>
+      </div>
+
+   <!-- Categorías -->
+<div class="vehicle-chip-list">
+  <ion-chip *ngFor="let v of vehicleTypes(); trackBy: trackByValue"
+            [outline]="!v.selected"
+            [color]="v.selected ? 'primary' : undefined"
+            (click)="selectVehicle(v.value)">
+    <ion-label>{{ v.label }}</ion-label>
+  </ion-chip>
+</div>
+
+<!-- Clases de servicio -->
+<div class="service-tiles">
+  <div *ngFor="let t of serviceTypes(); trackBy: trackByValue"
+       class="service-tile"
+       [class.selected]="t.value === (selectedType() ?? '')"
+       (click)="selectType(t.value)">
+    <ion-icon class="tile-icon" name="checkmark-circle-outline"></ion-icon>
+    <div class="icon-wrapper">
+      <ion-icon [name]="serviceIconsByLabel[t.label] || 'trophy-outline'"></ion-icon>
+    </div>
+    <div class="label">{{ t.label }}</div>
+    <div class="eta">≈ {{ etaText }}</div>
+  </div>
+</div>
+
+      <!-- Fila de método seleccionado y monto -->
+     <div class="payment-row v2">
+  <!-- Método de pago -->
+  <button type="button" class="pay-method" aria-label="Método de pago: Efectivo">
+    <span class="pm-icon">
+      <ion-icon name="cash-outline"></ion-icon>
+    </span>
+    <span class="pm-meta">
+      <span class="pm-label">Efectivo</span>
+    </span>
+    <!-- <ion-icon class="pm-chevron" name="chevron-forward-outline" aria-hidden="true"></ion-icon> -->
+  </button>
+
+  <!-- Precio -->
+  <div class="pay-amount" aria-label="Precio estimado">
+    <span class="value">{{ vm().totalEstimated | number : '1.0-2' }} {{ vm().currency }}</span>
+  </div>
+</div>
+
+      <!-- Botones de acción: confirmar y programar -->
+      <div class="action-row">
+        <button class="confirm-button" (click)="requestTrip()">
+          Buscar Taxi
+        </button>
+        <button class="schedule-button">
+          <ion-icon name="time"></ion-icon>
+        </button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

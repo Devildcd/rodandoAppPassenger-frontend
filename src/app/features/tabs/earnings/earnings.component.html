@@ -1,0 +1,113 @@
+ <!-- Ganancias + tabs de periodo + gráfico simple -->
+  <ion-card class="card earnings-card">
+    <ion-card-content>
+      <div class="earnings-grid">
+        <div class="earn-item">
+          <div class="earn-label">Ganancias totales</div>
+          <div class="earn-value">$710,015</div>
+          <ion-badge color="dark">DÍA</ion-badge>
+        </div>
+        <div class="earn-item">
+          <div class="earn-label">Ganancia en el año</div>
+          <div class="earn-value">$19,350</div>
+          <div class="period-tabs">
+            <ion-chip class="is-active">MES</ion-chip>
+            <ion-chip>AÑO</ion-chip>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart estático (SVG) -->
+      <div class="chart-wrap">
+        <svg viewBox="0 0 100 28" preserveAspectRatio="none" class="chart-svg" aria-hidden="true">
+          <polyline fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="1" points="0,20 10,18 20,22 30,14 40,16 50,12 60,18 70,10 80,12 90,8 100,16" />
+        </svg>
+        <div class="chart-axis">
+          <span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+   <!-- 2) Plan prepago & Wallet -->
+  <ion-card class="card section-plan">
+    <ion-card-header>
+      <ion-card-title>Plan prepago & Wallet</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="plan-wallet-grid">
+        <!-- Plan -->
+        <div class="plan-box">
+          <div class="plan-head">
+            <ion-badge color="success">Activo</ion-badge>
+            <span class="plan-name">Plan Pro</span>
+          </div>
+          <div class="plan-body">
+            <div class="row">
+              <span class="muted">Costo por viaje</span>
+              <strong>$0.75</strong>
+            </div>
+            <div class="row">
+              <span class="muted">Vence en</span>
+              <strong>3 días</strong>
+            </div>
+            <ion-progress-bar value="0.75"></ion-progress-bar>
+            <ion-note class="muted">75% del periodo restante</ion-note>
+          </div>
+          <div class="plan-actions">
+            <ion-button size="small" shape="round">Recargar plan</ion-button>
+            <ion-button size="small" fill="outline" shape="round">Ver planes</ion-button>
+          </div>
+        </div>
+
+        <!-- Wallet -->
+        <div class="wallet-box">
+          <div class="wallet-head">
+            <span class="muted">Saldo disponible</span>
+            <h2 class="wallet-balance">$ 12.40</h2>
+            <ion-badge color="warning">Autonomía: 2 viajes</ion-badge>
+          </div>
+          <div class="wallet-movements">
+            <ion-list lines="none">
+              <ion-item>
+                <ion-icon name="arrow-down-circle-outline" slot="start"></ion-icon>
+                <ion-label>
+                  <h3>Recarga efectiva</h3>
+                  <p class="muted">hoy · 10:24</p>
+                </ion-label>
+                <ion-note slot="end" color="success">+ $5.00</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="car-outline" slot="start"></ion-icon>
+                <ion-label>
+                  <h3>Viaje #8472</h3>
+                  <p class="muted">ayer · 19:05</p>
+                </ion-label>
+                <ion-note slot="end" color="medium">- $2.50</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="car-outline" slot="start"></ion-icon>
+                <ion-label>
+                  <h3>Viaje #8469</h3>
+                  <p class="muted">ayer · 17:22</p>
+                </ion-label>
+                <ion-note slot="end" color="medium">- $2.30</ion-note>
+              </ion-item>
+            </ion-list>
+            <div class="wallet-actions">
+              <ion-button size="small" shape="round">Ver movimientos</ion-button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banners de estado -->
+      <ion-card class="inline-banner warning" color="warning">
+        <ion-card-content>
+          <ion-icon name="alert-outline"></ion-icon>
+          <span>Tu plan vence pronto. Renueva para no quedarte sin cobertura.</span>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>

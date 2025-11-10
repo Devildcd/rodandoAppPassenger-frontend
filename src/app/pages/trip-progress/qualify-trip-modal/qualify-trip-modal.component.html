@@ -1,0 +1,89 @@
+<ion-content>
+  <ion-card class="trip-details-card">
+    <ion-card-content>
+
+      <!-- Header + Resumen -->
+<div class="trip-details-header">
+  <div class="header-title">
+    <ion-icon name="checkmark-circle-outline"></ion-icon>
+    ¡Tu viaje ha terminado!
+  </div>
+  <button class="skip-button">Omitir</button>
+</div>
+
+<!-- Driver profile -->
+<div class="driver-profile">
+  <div class="driver-left">
+    <ion-avatar class="driver-avatar">
+      <img [src]="driver.photoUrl || 'assets/default-driver.jpg'" alt="Foto conductor" />
+    </ion-avatar>
+
+    <div class="driver-info">
+      <div class="driver-name">{{ driver.name }}</div>
+      <div class="driver-vehicle">{{ driver.vehicle }}</div>
+    </div>
+  </div>
+
+  <!-- calificación a la derecha -->
+  <div class="driver-rating" aria-label="Calificación conductor">
+    <ion-icon name="star"></ion-icon>
+    <span class="rating-value">{{ driverAvgRating || '—' }}</span>
+  </div>
+</div>
+
+
+      <!-- Direcciones (origen / destino) -->
+      <div class="address-wrapper">
+        <!-- Origen -->
+        <div class="address-line">
+          <div class="address-left">
+            <ion-icon name="navigate" class="address-icon origin"></ion-icon>
+            <div class="address-text">
+              <div class="address-sub">originText</div>
+            </div>
+          </div>
+          <div class="time-label">08:30 AM</div>
+        </div>
+
+        <!-- Conector vertical -->
+        <div class="connector" aria-hidden="true"></div>
+
+        <!-- Destino -->
+        <div class="address-line">
+          <div class="address-left">
+            <ion-icon name="location" class="address-icon destination"></ion-icon>
+            <div class="address-text">
+              <div class="address-sub"> destinationText </div>
+            </div>
+          </div>
+          <div class="time-label">09:15 AM</div>
+        </div>
+      </div>
+
+      <!-- Rating & comment -->
+      <div class="rating-section">
+        <div class="stars" role="radiogroup" aria-label="Calificación">
+          <ion-icon
+            name="star"
+            *ngFor="let s of [1,2,3,4,5]; let i = index"
+            [class.filled]="i < rating"
+            (click)="setRating(i + 1)"
+            role="radio"
+            [attr.aria-checked]="i < rating">
+          </ion-icon>
+        </div>
+
+        <textarea placeholder="Deja una reseña..." [(ngModel)]="comment"></textarea>
+
+        <div class="actions">
+          <ion-button expand="block" >Enviar comentario</ion-button>
+        </div>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
+
+

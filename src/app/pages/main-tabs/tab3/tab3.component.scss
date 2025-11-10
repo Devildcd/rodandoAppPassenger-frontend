@@ -1,0 +1,36 @@
+.home-content {
+  --background: var(--ion-color-dark-bg);
+  color: var(--ion-color-dark-text);
+}
+
+.travel-section {
+  padding: 16px;
+
+  .dark-card {
+    --background: var(--ion-color-dark-bg);
+    --color: var(--ion-color-dark-text);
+    --border-radius: 12px;
+    --box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+
+    ion-card-header {
+      display: flex;
+      align-items: center;
+
+      .card-icon {
+        font-size: 2rem;
+        margin-right: 12px;
+        color: var(--ion-color-primary);
+      }
+
+      ion-card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    }
+
+    ion-card-content {
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+  }
+}

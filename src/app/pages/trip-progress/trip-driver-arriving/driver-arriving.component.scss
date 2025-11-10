@@ -1,0 +1,184 @@
+.page-content {
+  height: 100%;
+  padding: 0;
+}
+
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;    /* cambia a 'row' para dividir horizontal */
+  height: 100%;
+}
+
+/* Ajusta proporciones: map 40%, detalles 60% */
+.map-wrapper {
+  flex: 5;
+}
+
+.details-wrapper {
+  flex: 5;
+  background: var(--ion-color-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Card principal */
+.card-trip-overview {
+   height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: transparent; /* según tu diseño */
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* 1. Encabezado de viaje */
+.trip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+
+  .trip-type {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ion-color-primary);
+
+    ion-icon {
+      font-size: 24px;
+      margin-right: 8px;
+    }
+  }
+
+  .trip-info {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: var(--ion-color-light);
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      color: var(--ion-color-warning-shade);
+
+      ion-icon {
+        font-size: 16px;
+        margin-right: 4px;
+      }
+    }
+
+    .info-separator {
+      margin: 0 8px;
+    }
+  }
+}
+
+/* Divisor */
+.divider {
+  height: 1px;
+  background: var(--ion-color-medium-tint);
+}
+
+/* 2. Sección de vehículo */
+.vehicle-section {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--ion-color-dark-shade);
+
+  .vehicle-photo {
+    width: 80px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 12px;
+  }
+
+  .vehicle-data {
+    .vehicle-model {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ion-color-light);
+    }
+    .vehicle-eta {
+      font-size: 14px;
+      color: var(--ion-color-medium);
+      margin-top: 4px;
+    }
+  }
+}
+
+/* 3. Sección de conductor */
+.driver-section {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+
+  .driver-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+  }
+
+  .driver-data {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .driver-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ion-color-light);
+    }
+
+    .driver-rating {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: var(--ion-color-medium);
+
+      ion-icon {
+        font-size: 14px;
+        margin-right: 4px;
+        color: var(--ion-color-warning);
+      }
+    }
+  }
+
+  .driver-actions {
+    display: flex;
+    gap: 8px;
+
+    ion-button {
+      --padding-start: 0;
+      --padding-end: 0;
+      --padding-top: 0;
+      --padding-bottom: 0;
+      --border-radius: 50%;
+      --background: var(--ion-color-primary);
+      width: 36px;
+      height: 36px;
+
+      ion-icon {
+        font-size: 20px;
+        color: var(--ion-color-light);
+      }
+    }
+  }
+}
+
+/* 4. Botón Cancelar */
+.btn-cancel {
+  margin: 12px 16px 16px;
+  --color: var(--ion-color-primary);
+  --border-radius: 20px;
+  font-weight: 600;
+  width: calc(100% - 32px);
+  font-size: 16px;
+  height: 44px;
+}
+

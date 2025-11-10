@@ -1,0 +1,36 @@
+ <div class="floating-buttons">
+    <app-floating-button iconName="arrow-back-outline" positionHorizontal="start" (click)="onBack()"></app-floating-button>
+  </div>
+
+<ion-content class="map-content" [fullscreen]="true">
+<div #mapEl class="mapbox-container" aria-label="Mapa de conducción"></div>
+
+
+<!-- FAB Centrar -->
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+<ion-fab-button (click)="centerOnMe()">
+<ion-icon name="locate"></ion-icon>
+</ion-fab-button>
+</ion-fab>
+
+
+<!-- Loading -->
+<div class="loading-overlay" *ngIf="!isReady() && !error()">
+<app-spinner message="Cargando mapa…"></app-spinner>
+</div>
+
+
+<!-- Error -->
+<div class="error-overlay" *ngIf="error()">
+<ion-card>
+<ion-card-content>
+<ion-icon name="warning-outline"></ion-icon>
+<div class="err-text">
+<strong>No se pudo cargar el mapa</strong>
+<span>{{ error() }}</span>
+</div>
+<ion-button size="small">Reintentar</ion-button>
+</ion-card-content>
+</ion-card>
+</div>
+</ion-content>

@@ -1,0 +1,118 @@
+ion-content {
+    position: relative; /* para que los absolute hijos se calculen respecto a él */
+  }
+  
+  .map-wrapper {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 0;      /* explícito y bajo */
+  }
+
+
+
+ion-content {
+  position: relative; /* para hijos absolute */
+}
+
+/* Iconos e labels genéricos */
+ion-icon {
+  font-size: 1.2rem;
+  color: var(--ion-color-primary);
+}
+
+ion-label {
+  font-size: 1rem;
+  color: var(--ion-color-light);
+}
+
+
+ion-input {
+  font-size: 1rem;                       /* 16px */
+  color: var(--ion-color-light);
+   --placeholder-color: var(--ion-color-light);
+}
+
+ion-label {
+ color: var(--ion-color-primary-contrast);
+}
+
+/* Botón de limpiar (clear) dentro de la card */
+ion-button[fill="clear"] ion-icon {
+  font-size: 1rem;
+  color: var(--ion-color-primary);
+}
+
+/* Sección “Lugares frecuentes” */
+.frequent-section {
+  margin-top: 1.25rem;                   /* 20px */
+
+  h6 {
+    margin: 0 0 0.5rem;                  /* 0 0 8px */
+    font-size: 0.875rem;                 /* 14px */
+    font-weight: 600;
+    color: var(--ion-color-medium);
+  }
+}
+
+/* Lista dentro de la card */
+ion-list {
+  max-height: 8.75rem;                   /* 140px */
+  overflow-y: auto;
+  background: transparent;
+}
+
+ion-item {
+  --min-height: 2.75rem;                 /* 44px */
+  background: transparent;
+  color: var(--ion-color-light);
+  border-radius: 0.5rem;                 /* 8px */
+  --ion-item-background: transparent;
+  border-bottom: 1px solid rgba(var(--ion-color-light-rgb), 0.05);
+}
+
+
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 320px) {
+  ion-card-content {
+    padding: 0.75rem;                    /* 12px */
+  }
+}
+
+
+.fab-travel {
+  position: fixed;                               /* Empleado sobre todo */
+  bottom: env(safe-area-inset-bottom, 4px);       /* Se adapta a pantallas con notch */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  padding: 0.6em 1em;
+  background: var(--ion-color-primary);           /* Mantener color primario para destacar */
+  color: #ffffff;                                 /* Texto claro */
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);       /* Sombra más intensa en modo oscuro */
+  cursor: pointer;
+  animation: float 2s ease-in-out infinite;
+  transition: background 200ms;
+  z-index: 999;                                   /* Por encima de todo */
+  pointer-events: auto;
+}
+
+.fab-travel ion-icon {
+  font-size: 1.2rem;
+  margin-right: 0.5em;
+  color: #ffffff;                                 /* Icono en blanco */
+}
+
+/* Animación de flotación */
+@keyframes float {
+  0%, 100% {
+    transform: translate(-30px , -30%);
+  }
+  50% {
+    transform: translate(-50%, -10px);
+  }
+}
+

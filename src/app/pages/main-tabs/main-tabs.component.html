@@ -1,0 +1,28 @@
+<ion-header slot="fixed" class="floating-header">
+  <div class="floating-buttons">
+    <app-floating-button iconName="menu-outline" positionHorizontal="start"></app-floating-button>
+    <app-floating-button iconName="notifications-outline" positionHorizontal="end"></app-floating-button>
+  </div>
+</ion-header>
+
+<ion-router-outlet></ion-router-outlet>
+
+<ion-footer class="custom-bottom-bar" slot="fixed">
+  <ion-toolbar>
+    <div class="tab-icons">
+      <ion-button fill="clear" routerLink="/tabs/tab1" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/tabs/tab2" routerLinkActive="active">
+        <ion-icon name="location-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/tabs/tab3" routerLinkActive="active">
+        <ion-icon name="time-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/tabs/tab4" routerLinkActive="active">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+

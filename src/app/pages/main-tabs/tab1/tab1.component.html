@@ -1,0 +1,28 @@
+<ion-content >
+
+ <app-content-card [contentTemplate]="customCardContent">
+  <ng-template #customCardContent>
+      <!-- Destination Input -->
+      <ion-item lines="none" class="destination-item" (click)="openModal()">
+        <ion-icon name="location" slot="start"></ion-icon>
+        <ion-input
+        [(ngModel)]="destination"
+          placeholder="¿Donde quieres ir?">
+        </ion-input>
+
+        <ion-button  fill="clear" size="small" slot="end" (click)="clearDestination()">
+          <ion-icon name="send" color="medium" slot="icon-only"></ion-icon>
+        </ion-button>
+
+      </ion-item>
+  </ng-template>
+ </app-content-card>
+
+ <app-base-map
+    [style.height.%]="100"
+    [style.width.%]="100"
+    center="center"
+    zoom="zoom"
+    mapOptions="options">
+  </app-base-map>
+</ion-content>

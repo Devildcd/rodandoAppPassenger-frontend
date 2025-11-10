@@ -1,0 +1,17 @@
+<ion-content [fullscreen]="true" class="has-map-bg content-offset">
+  <div class="map-wrap">
+    <div #mapEl id="map" class="map-canvas"></div>
+    <div class="map-fade"></div>
+  </div>
+
+  <!-- SOLO un wrapper -->
+  <div slot="fixed" class="search-wrapper">
+    <ion-card class="search-card">
+      <ion-card-content>
+
+       <app-trip-options></app-trip-options>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

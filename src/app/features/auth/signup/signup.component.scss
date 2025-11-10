@@ -1,0 +1,130 @@
+/* separación entre inputs y look iOS-like */
+/* contenedor del input (reemplaza ion-item) */
+.auth-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;            /* mayor separación entre inputs */
+  padding: 10px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  transition: border-color 180ms ease, box-shadow 220ms ease, transform 120ms ease;
+  box-sizing: border-box;
+}
+
+/* icono a la izquierda */
+.auth-input .icon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--ion-color-primary);
+  font-size: 20px;
+}
+
+/* wrapper para input + label flotante */
+.input-wrapper {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* input nativo */
+.input-wrapper input {
+  width: 100%;
+  padding: 14px 12px 10px 12px; /* espacio suficiente para label flotante */
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--ion-color-light);
+  font-size: 15px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* label flotante (inicia sobre el input) */
+.input-wrapper label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 160ms ease, font-size 160ms ease, color 160ms ease;
+  pointer-events: none;
+  color: var(--ion-color-medium);
+  font-size: 14px;
+}
+
+/* cuando el input está en foco o tiene contenido, subimos el label */
+.input-wrapper input:focus + label,
+.input-wrapper input:not(:placeholder-shown) + label {
+  transform: translateY(-140%) scale(0.86);
+  transform-origin: left top;
+  font-size: 12px;
+  color: var(--ion-color-primary);
+}
+
+/* estilo de foco del contenedor */
+.auth-input:focus-within {
+  border-color: var(--ion-color-primary);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25), 0 0 0 6px rgba(var(--ion-color-primary-rgb, 0,122,255), 0.06);
+  transform: translateY(-1px);
+}
+
+/* botón limpiar a la derecha */
+.clear-btn {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ion-color-medium);
+  cursor: pointer;
+}
+.clear-btn ion-icon { font-size: 20px; }
+
+/* adaptaciones responsive */
+@media (max-width: 420px) {
+  .auth-input { margin-top: 14px; padding: 8px; }
+  .auth-input .icon { width: 34px; height: 34px; font-size: 18px; }
+  .input-wrapper label { left: 10px; }
+  .input-wrapper input { padding: 12px 10px 8px 10px; }
+}
+
+
+.login-button {
+  font-size: 16px;
+  font-weight: bold;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.forgot-password-link {
+  font-size: 14px;
+  color: var(--ion-color-primary);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.link-container {
+  text-align: center;
+  font-size: 14px;
+  padding: 16px 0;
+  color: var(--ion-color-medium);
+
+  .link-action {
+    color: var(--ion-color-primary);
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

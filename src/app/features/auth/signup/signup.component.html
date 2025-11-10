@@ -1,0 +1,110 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form">
+  <!-- Nombre -->
+  <div class="auth-input">
+    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+    <div class="input-wrapper">
+      <input formControlName="name" type="text" placeholder=" " aria-label="Nombre" />
+      <label>Nombre</label>
+    </div>
+    <button type="button" class="clear-btn" (click)="clearControl('name')"><ion-icon name="close-circle"></ion-icon></button>
+  </div>
+
+  @if (form.get('name')?.touched && form.get('name')?.invalid) {
+    <div class="error">
+      <small *ngIf="form.get('name')?.errors?.['required']">El nombre es obligatorio</small>
+      <small *ngIf="form.get('name')?.errors?.['minlength']">Mínimo 2 caracteres</small>
+    </div>
+  }
+
+  <!-- Selector Email o Teléfono -->
+  <ion-segment formControlName="contactMethod" class="ion-margin-top">
+    <ion-segment-button value="email"><ion-label>Correo</ion-label></ion-segment-button>
+    <ion-segment-button value="phone"><ion-label>Teléfono</ion-label></ion-segment-button>
+  </ion-segment>
+
+  <!-- Email -->
+  @if (contactMethod() === 'email') {
+    <div class="auth-input">
+      <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+      <div class="input-wrapper">
+        <input formControlName="email" type="email" placeholder=" " aria-label="Correo electrónico" />
+        <label>Correo electrónico</label>
+      </div>
+      <button type="button" class="clear-btn" (click)="clearControl('email')"><ion-icon name="close-circle"></ion-icon></button>
+    </div>
+
+    @if (form.get('email')?.touched && form.get('email')?.invalid) {
+      <div class="error">
+        <small *ngIf="form.get('email')?.errors?.['required']">El correo es obligatorio</small>
+        <small *ngIf="form.get('email')?.errors?.['email']">Correo inválido</small>
+      </div>
+    }
+  }
+
+  <!-- Teléfono -->
+  @if (contactMethod() === 'phone') {
+    <div class="auth-input">
+      <span class="icon"><ion-icon name="call-outline"></ion-icon></span>
+      <div class="input-wrapper">
+        <input formControlName="phone" type="tel" placeholder=" " aria-label="Teléfono" />
+        <label>Teléfono</label>
+      </div>
+      <button type="button" class="clear-btn" (click)="clearControl('phone')"><ion-icon name="close-circle"></ion-icon></button>
+    </div>
+
+    @if (form.get('phone')?.touched && form.get('phone')?.invalid) {
+      <div class="error">
+        <small *ngIf="form.get('phone')?.errors?.['required']">Teléfono es obligatorio</small>
+        <small *ngIf="form.get('phone')?.errors?.['pattern']">Teléfono inválido</small>
+      </div>
+    }
+  }
+
+  <!-- Password -->
+  <div class="auth-input">
+    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+    <div class="input-wrapper">
+      <input formControlName="password" type="password" placeholder=" " aria-label="Contraseña" />
+      <label>Contraseña</label>
+    </div>
+    <button type="button" class="clear-btn" (click)="clearControl('password')"><ion-icon name="close-circle"></ion-icon></button>
+  </div>
+
+  @if (form.get('password')?.touched && form.get('password')?.invalid) {
+    <div class="error">
+      <small *ngIf="form.get('password')?.errors?.['required']">La contraseña es obligatoria</small>
+      <small *ngIf="form.get('password')?.errors?.['minlength']">Mínimo 8 caracteres</small>
+    </div>
+  }
+
+  <!-- Confirm password -->
+  <div class="auth-input">
+    <span class="icon"><ion-icon name="lock-open-outline"></ion-icon></span>
+    <div class="input-wrapper">
+      <input formControlName="confirmPassword" type="password" placeholder=" " aria-label="Confirmar contraseña" />
+      <label>Confirmar contraseña</label>
+    </div>
+    <button type="button" class="clear-btn" (click)="clearControl('confirmPassword')"><ion-icon name="close-circle"></ion-icon></button>
+  </div>
+
+  @if (form.errors?.['passwordsMismatch'] && form.touched) {
+    <div class="error">
+      <small>Las contraseñas no coinciden</small>
+    </div>
+  }
+
+  <!-- Server-side form error example (email exists) -->
+  @if (userFacade.getRegisterStatus().formErrors()?.['email']?.[0]) {
+    <div class="error">
+      <small>{{ userFacade.getRegisterStatus().formErrors()?.['email']?.[0] }}</small>
+    </div>
+  }
+
+  <!-- Submit -->
+  <ion-button expand="block" class="login-button ion-margin-top" color="primary" type="submit"
+    [disabled]="isLoading() || form.invalid">
+    <ion-icon slot="start" name="person-add-outline"></ion-icon>
+    <span *ngIf="!isLoading()">Registrarse</span>
+    <ion-spinner *ngIf="isLoading()" name="lines"></ion-spinner>
+  </ion-button>
+</form>

@@ -1,0 +1,186 @@
+<app-reusable-modal #tripDetail [initialBreakpoint]="0.8">
+
+    <ion-content>
+      <ion-card class="trip-details-card">
+        <ion-card-content>
+          <!-- Header + Resumen -->
+          <div class="trip-details-header">
+            <div class="header-title">
+              <span>Detalles del viaje</span>
+            </div>
+            <div class="trip-summary">
+              <div class="summary-item">
+                <ion-icon name="map"></ion-icon>
+                <span>{{ vm().distanceText }} km</span>
+              </div>
+              <div class="summary-item">
+                <ion-icon name="time"></ion-icon>
+                <span>≈ {{ vm().durationText }} min</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="address-wrapper">
+            <!-- Origen -->
+            <div class="address-line">
+              <div class="address-left">
+                <ion-icon name="navigate" class="address-icon origin"></ion-icon>
+                <span class="address-text">{{ vm().originLabel }}</span>
+              </div>
+              <ion-button fill="outline" size="small">
+                <ion-icon slot="start" name="pencil-outline"></ion-icon>
+ Editar
+              </ion-button>
+            </div>
+
+            <!-- Línea punteada -->
+            <div class="connector"></div>
+
+            <!-- Destino -->
+            <div class="address-line">
+              <div class="address-left">
+                <ion-icon name="location" class="address-icon destination"></ion-icon>
+                <span class="address-text">{{ vm().destinationLabel }}</span>
+              </div>
+              <ion-button fill="outline" size="small">
+                <ion-icon slot="start" name="pencil-outline"></ion-icon>
+                Editar
+              </ion-button>
+            </div>
+          </div>
+
+          <!-- Selector de vehículo -->
+          <div class="vehicle-chip-list">
+            <ion-chip *ngFor="let v of vehicleTypes" [outline]="v.value !== selectedVehicle"
+              [color]="v.value === selectedVehicle ? 'primary' : undefined" (click)="selectVehicle(v.value)">
+              <ion-icon [name]="v.icon" slot="start"></ion-icon>
+              <ion-label>{{ v.label }}</ion-label>
+            </ion-chip>
+          </div>
+
+          <div class="service-tiles">
+  <ng-container *ngFor="let type of serviceTypes">
+    <div
+      class="service-tile"
+      [class.selected]="type.value === selectedType"
+      (click)="selectType(type)"
+    >
+      <!-- Icono de selección -->
+      <ion-icon class="tile-icon" name="checkmark-circle-outline"></ion-icon>
+
+      <!-- Icono principal -->
+      <div class="icon-wrapper">
+        <ion-icon [name]="type.icon"></ion-icon>
+      </div>
+
+      <!-- Label y ETA -->
+      <div class="label">{{ type.label }}</div>
+      <div class="eta">≈ {{ type.eta }}</div>
+    </div>
+  </ng-container>
+</div>
+
+<!-- Fila de método seleccionado y monto -->
+<div class="payment-row">
+  <!-- Icono y etiqueta del método seleccionado -->
+  <div class="payment-selected">
+    <div class="payment-icon">
+      <ion-icon name="cash"></ion-icon>
+    </div>
+    <div class="payment-label">Efectivo</div>
+    <ion-icon class="chevron" name="chevron-forward-outline"></ion-icon>
+  </div>
+
+  <!-- Monto estático por el momento -->
+  <div class="payment-amount">
+    $1200.50
+  </div>
+</div>
+
+<!-- Botones de acción: confirmar y programar -->
+<div class="action-row">
+  <button class="confirm-button" (click)="openDriverInfo()">
+    Buscar Taxi
+  </button>
+  <button class="schedule-button">
+    <ion-icon name="time"></ion-icon>
+  </button>
+</div>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+
+  </app-reusable-modal>
+
+  <app-reusable-modal
+  #driverModal
+  [initialBreakpoint]="0.5"
+  class="driver-info-modal"
+>
+ <ion-content>
+  <ion-card class="card-trip-overview">
+
+    <!-- 1. Encabezado de viaje -->
+    <div class="trip-header">
+      <div class="trip-type">
+        <ion-icon name="car-outline"></ion-icon>
+        <span>Standard</span>
+      </div>
+      <div class="trip-info">
+        <div class="info-item">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>4 min</span>
+        </div>
+        <div class="info-separator">·</div>
+        <div class="info-item">
+          <span>VM 4562</span>
+        </div>
+      </div>
+    </div>
+
+     <!-- Divisor -->
+    <div class="divider"></div>
+
+    <!-- 2. Detalle de vehículo -->
+    <div class="vehicle-section">
+      <img class="vehicle-photo" src="assets/images/confort.png" alt="Vehículo">
+      <div class="vehicle-data">
+        <div class="vehicle-model">Toyota Prius</div>
+        <div class="vehicle-eta">Llegada en 4 min</div>
+      </div>
+    </div>
+
+    <!-- 3. Información del conductor -->
+    <div class="driver-section">
+      <img class="driver-photo" src="assets/images/user.png" alt="Conductor">
+      <div class="driver-data">
+        <div class="driver-name">Juan Pérez</div>
+        <div class="driver-rating">
+          <ion-icon name="star"></ion-icon>
+          <span>4.8</span>
+        </div>
+      </div>
+      <div class="driver-actions">
+        <ion-button fill="clear" >
+          <ion-icon slot="icon-only" name="call-outline"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" >
+          <ion-icon slot="icon-only" name="chatbubble-ellipses-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+
+    <!-- 4. Botón Cancelar -->
+    <ion-button class="btn-cancel" fill="outline">
+      Cancel
+    </ion-button>
+
+  </ion-card>
+</ion-content>
+
+</app-reusable-modal>
+
+
+
+

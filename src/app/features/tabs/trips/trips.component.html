@@ -1,0 +1,132 @@
+
+
+<ion-content class="page-content content-offset" [fullscreen]="true" color="dark">
+  <div class="content-container">
+    <div class="segment-container">
+      <ion-segment [(ngModel)]="segment" mode="md">
+<ion-segment-button value="activo">
+<ion-label>Activo</ion-label>
+</ion-segment-button>
+<ion-segment-button value="historial">
+<ion-label>Historial</ion-label>
+</ion-segment-button>
+</ion-segment>
+    </div>
+    <ng-container *ngIf="segment === 'activo'; else tabHistory">
+
+    <section *ngIf="!hasActiveTrip" class="empty-state">
+      <ion-icon name="car-outline"></ion-icon>
+      <h3>No hay viajes activos</h3>
+      <p>Cuando aceptes una oferta, verás el progreso y los detalles aquí.</p>
+      <ion-button fill="solid">Ir al mapa</ion-button>
+    </section>
+
+    <section *ngIf="hasActiveTrip" class="layout-wrapper">
+      <div class="top-wrapper">
+        <div class="context-header">
+
+          <div class="timer" *ngIf="state==='enViaje'">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>00:42</span>
+          </div>
+        </div>
+        <!-- Timeline / barra de progreso -->
+<div class="timeline">
+<div class="line"></div>
+<div class="step done">
+<span class="dot"><ion-icon name="checkmark"></ion-icon></span>
+<span class="label">Oferta</span>
+</div>
+<div class="step" [class.active]="state==='rumboPickup'" [class.done]="state!=='esperando'">
+<span class="dot">2</span>
+<span class="label">Pickup</span>
+</div>
+<div class="step" [class.active]="state==='enViaje'" [class.done]="state==='enViaje' || state==='finalizando'">
+<span class="dot">3</span>
+<span class="label">En curso</span>
+</div>
+<div class="step" [class.active]="state==='finalizando'" [class.done]="state==='finalizando'">
+<span class="dot">4</span>
+<span class="label">Finalizado</span>
+</div>
+</div>
+      </div>
+
+      <div class="details-wrapper">
+        <ion-card class="card-trip-overview">
+          <div class="trip-header">
+            <div class="trip-status">
+              <ion-icon *ngIf="state==='enViaje'" name="rocket-outline"></ion-icon>
+              <ion-icon *ngIf="state==='esperando'" name="hourglass-outline"></ion-icon>
+              {{ state==='enViaje' ? 'Viajando' : state==='esperando' ? 'Esperando' : 'En proceso' }}
+            </div>
+            <div class="trip-timer">
+              <ion-icon name="happy-outline"></ion-icon>
+              <span>00:42</span>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="passenger-row">
+            <ion-avatar class="p-avatar"><img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="P"/></ion-avatar>
+            <div class="p-info">
+              <div class="p-name">Nombre Pasajero</div>
+            </div>
+          </div>
+
+          <div class="address-wrapper">
+            <div class="address-line">
+              <div class="address-left">
+                <ion-icon name="navigate" class="address-icon origin"></ion-icon>
+                <span class="address-text">Punto de recogida: Av. Principal 123</span>
+              </div>
+            </div>
+            <div class="connector"></div>
+            <div class="address-line">
+              <div class="address-left">
+                <ion-icon name="location" class="address-icon destination"></ion-icon>
+                <span class="address-text">Destino: Calle Secundaria 45</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="vehicle-info-section">
+            <div class="vehicle-bottom">
+              <div class="trip-fare"><ion-icon name="cash-outline"></ion-icon><span>1200.50</span></div>
+              <div class="action-fabs">
+                <ion-fab-button size="small" class="fab-share"><ion-icon name="arrow-redo"></ion-icon></ion-fab-button>
+                <ion-fab-button size="small" class="fab-panic"><ion-icon name="shield-half"></ion-icon></ion-fab-button>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <ion-button class="btn-cancel" fill="outline">Cancelar</ion-button>
+            <ion-button class="btn-details" fill="solid">Finalizar</ion-button>
+          </div>
+        </ion-card>
+      </div>
+    </section>
+  </ng-container>
+
+  <ng-template #tabHistory>
+    <section class="history-wrapper">
+      <ion-list>
+        <ion-item detail>
+          <ion-label>
+            <h3>Hoy · 08:42 · Centro → Aeropuerto</h3>
+            <p class="muted">$4.20 · Completado</p>
+          </ion-label>
+        </ion-item>
+        <ion-item detail>
+          <ion-label>
+            <h3>Ayer · 19:05 · Plaza → Estación</h3>
+            <p class="muted">$2.90 · Completado</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </section>
+  </ng-template>
+  </div>
+</ion-content>

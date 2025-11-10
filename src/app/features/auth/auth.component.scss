@@ -1,0 +1,62 @@
+.auth-background {
+  --background: url('/assets/images/image.jpg') no-repeat center/cover;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* negro semi-transparente */
+  backdrop-filter: blur(3px);
+  z-index: 0;
+}
+
+.search-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  z-index: 1;
+}
+
+.search-card {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  padding-top: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.65); /* fondo negro con 65% de opacidad */
+  backdrop-filter: saturate(180%) blur(8px); /* para suavizar el fondo detrás */
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+  color: var(--ion-color-light); /* texto claro para contraste */
+}
+
+.welcome-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* espacio entre texto y logo */
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* para que en pantallas pequeñas bajen */
+
+  .welcome-text {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+    margin: 0; /* quito margin-bottom porque está junto al logo */
+  }
+
+  .app-logo {
+    width: 80px; /* un poco más pequeño para que encaje bien */
+    height: auto;
+  }
+}
+
+.slogan-text {
+  text-align: center;
+  font-size: 15px;
+  color: var(--ion-color-light-shade);
+  margin-top: 8px;
+}
+

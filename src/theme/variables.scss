@@ -1,0 +1,148 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+:root {
+  /**
+   * Colores para el tema claro
+   * Estas variables se aplican por defecto y cuando el sistema está en modo claro.
+   */
+
+  /* Paleta de Colores Personalizada */
+
+  /* 1. Rojo (Color Primario - Resaltado & Acciones Importantes) */
+  --ion-color-primary: #D32F2F;
+  --ion-color-primary-rgb: 211,47,47;
+  --ion-color-primary-contrast: #ffffff; /* Contraste blanco para el rojo */
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #BD2A2A;
+  --ion-color-primary-tint: #DA4545;
+
+  /* 2. Amarillo Dorado (Color de Advertencia/Énfasis - Elegante & Destacados Visuales) */
+  --ion-color-warning: #FFC107;
+  --ion-color-warning-rgb: 255,193,7;
+  --ion-color-warning-contrast: #000000; /* Contraste negro para el amarillo */
+  --ion-color-warning-contrast-rgb: 0,0,0;
+  --ion-color-warning-shade: #E6AE06;
+  --ion-color-warning-tint: #FFC92F;
+
+  /* 3. Gris Claro (Color Claro - Fondo Minimalista & Neutro) */
+  --ion-color-light: #F5F5F5;
+  --ion-color-light-rgb: 245,245,245;
+  --ion-color-light-contrast: #000000; /* Contraste negro para el gris claro */
+  --ion-color-light-contrast-rgb: 0,0,0;
+  --ion-color-light-shade: #DBDBDB;
+  --ion-color-light-tint: #F8F8F8;
+
+  /* 4. Negro (Color Oscuro - Tipografía & Contrastes Fuertes) */
+  --ion-color-dark: #212121;
+  --ion-color-dark-rgb: 33,33,33;
+  --ion-color-dark-contrast: #ffffff; /* Contraste blanco para el negro */
+  --ion-color-dark-contrast-rgb: 255,255,255;
+  --ion-color-dark-shade: #1D1D1D;
+  --ion-color-dark-tint: #373737;
+
+  /* 5. Gris Oscuro (Color Medio - Detalles Secundarios & Sombras) */
+  --ion-color-medium: #757575;
+  --ion-color-medium-rgb: 117,117,117;
+  --ion-color-medium-contrast: #ffffff; /* Contraste blanco para el gris oscuro */
+  --ion-color-medium-contrast-rgb: 255,255,255;
+  --ion-color-medium-shade: #676767;
+  --ion-color-medium-tint: #838383;
+
+  /* Variables de fondo y texto para el tema claro */
+  --ion-background-color: var(--ion-color-light); /* Fondo general: Gris Claro */
+  --ion-background-color-rgb: var(--ion-color-light-rgb);
+  --ion-text-color: var(--ion-color-dark);       /* Color de texto principal: Negro */
+  --ion-text-color-rgb: var(--ion-color-dark-rgb);
+
+  /* Colores de las barras de herramientas (toolbars) en el tema claro */
+  --ion-toolbar-background: var(--ion-color-light);
+  --ion-toolbar-background-rgb: var(--ion-color-light-rgb);
+  --ion-toolbar-color: var(--ion-color-dark);
+  --ion-toolbar-color-rgb: var(--ion-color-dark-rgb);
+
+  /* Colores de los ítems y tarjetas en el tema claro */
+  --ion-item-background: var(--ion-color-light);
+  --ion-item-background-rgb: var(--ion-color-light-rgb);
+  --ion-card-background: var(--ion-color-light);
+  --ion-card-background-rgb: var(--ion-color-light-rgb);
+}
+
+
+/**
+ * Colores para el tema oscuro
+ * Estas variables se aplican cuando el sistema del usuario está en modo oscuro.
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Paleta de Colores Personalizada para Modo Oscuro */
+
+    /* Rojo (Primario) - se mantiene igual, ya que destaca bien en ambos modos */
+    --ion-color-primary: #D32F2F;
+    --ion-color-primary-rgb: 211,47,47;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255,255,255;
+    --ion-color-primary-shade: #BD2A2A;
+    --ion-color-primary-tint: #DA4545;
+
+    /* Amarillo Dorado (Advertencia) - se mantiene igual, ya que destaca bien en ambos modos */
+    --ion-color-warning: #FFC107;
+    --ion-color-warning-rgb: 255,193,7;
+    --ion-color-warning-contrast: #000000;
+    --ion-color-warning-contrast-rgb: 0,0,0;
+    --ion-color-warning-shade: #E6AE06;
+    --ion-color-warning-tint: #FFC92F;
+
+    /* Gris Claro (Light) en modo oscuro - se usa para texto principal */
+    --ion-color-light: #F5F5F5; /* Usado como color de texto principal en modo oscuro */
+    --ion-color-light-rgb: 245,245,245;
+    --ion-color-light-contrast: #000000;
+    --ion-color-light-contrast-rgb: 0,0,0;
+    --ion-color-light-shade: #DBDBDB;
+    --ion-color-light-tint: #F8F8F8;
+
+    /* Negro (Dark) en modo oscuro - se usa para fondo principal */
+    --ion-color-dark: #212121; /* Usado como color de fondo principal en modo oscuro */
+    --ion-color-dark-rgb: 33,33,33;
+    --ion-color-dark-contrast: #ffffff;
+    --ion-color-dark-contrast-rgb: 255,255,255;
+    --ion-color-dark-shade: #1D1D1D;
+    --ion-color-dark-tint: #373737;
+
+    /* Gris Oscuro (Medium) en modo oscuro - para detalles secundarios */
+    --ion-color-medium: #757575;
+    --ion-color-medium-rgb: 117,117,117;
+    --ion-color-medium-contrast: #ffffff;
+    --ion-color-medium-contrast-rgb: 255,255,255;
+    --ion-color-medium-shade: #676767;
+    --ion-color-medium-tint: #838383;
+
+    /* Variables de fondo y texto para el tema oscuro */
+    --ion-background-color: var(--ion-color-dark); /* Fondo general: Negro */
+    --ion-background-color-rgb: var(--ion-color-dark-rgb);
+    --ion-text-color: var(--ion-color-light);       /* Color de texto principal: Gris Claro */
+    --ion-text-color-rgb: var(--ion-color-light-rgb);
+
+    /* Colores de las barras de herramientas (toolbars) en el tema oscuro */
+    --ion-toolbar-background: var(--ion-color-dark);
+    --ion-toolbar-background-rgb: var(--ion-color-dark-rgb);
+    --ion-toolbar-color: var(--ion-color-light);
+    --ion-toolbar-color-rgb: var(--ion-color-light-rgb);
+
+    /* Colores de los ítems y tarjetas en el tema oscuro */
+    --ion-item-background: var(--ion-color-dark);
+    --ion-item-background-rgb: var(--ion-color-dark-rgb);
+    --ion-card-background: var(--ion-color-dark);
+    --ion-card-background-rgb: var(--ion-color-dark-rgb);
+  }
+
+  body.dark {
+    --ion-background-color: var(--ion-background-color);
+    --ion-background-color-rgb: var(--ion-background-color-rgb);
+    --ion-text-color: var(--ion-text-color);
+    --ion-text-color-rgb: var(--ion-text-color-rgb);
+    --ion-toolbar-background: var(--ion-toolbar-background);
+    --ion-item-background: var(--ion-item-background);
+    --ion-card-background: var(--ion-card-background);
+  }
+}

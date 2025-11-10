@@ -1,0 +1,31 @@
+.map-content { --padding-top: 0; --padding-bottom: 0; }
+.mapbox-container { position:absolute; inset:0; box-shadow: inset 0 -30px 40px rgba(0,0,0,.15); }
+
+
+/* Controles con safe-area */
+.mapboxgl-ctrl-top-right { margin-top: calc(var(--ion-safe-area-top) + 8px); margin-right: 8px; }
+.mapboxgl-ctrl-top-left { margin-top: calc(var(--ion-safe-area-top) + 8px); margin-left: 8px; }
+
+
+/* Indicadores */
+.status-indicators { position:absolute; left:12px; top: calc(var(--ion-safe-area-top) + 12px); display:flex; gap:8px; z-index:3; }
+.status-indicators ion-chip { --background: rgba(0,0,0,.35); backdrop-filter: blur(6px); }
+
+
+/* Overlays carga/error */
+.loading-overlay, .error-overlay { position:absolute; inset:0; display:grid; place-items:center; z-index:4; background: color-mix(in oklab, var(--ion-background-color) 35%, transparent); }
+.error-overlay ion-card{ border-radius: 14px; }
+.error-overlay ion-card-content{ display:flex; align-items:center; gap:10px; }
+.error-overlay ion-icon{ font-size: 22px; color: var(--ion-color-warning); }
+.err-text{ display:grid; }
+.err-text span{ color: var(--ion-color-medium); font-size: .9rem; }
+
+
+/* Bottom sheet */
+ion-modal::part(content){ border-top-left-radius: 16px; border-top-right-radius: 16px; }
+.sheet-sec{ padding: 12px 16px; }
+.row.two{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.label{ color: var(--ion-color-medium); font-size: .9rem; }
+.value{ font-weight: 800; font-size: 1.1rem; }
+.tip{ display:flex; align-items:center; gap:10px; }
+.tip ion-icon{ color: var(--ion-color-warning); }

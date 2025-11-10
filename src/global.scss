@@ -1,0 +1,228 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Regular style toast */
+@import 'ngx-toastr/toastr';
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import '@ionic/angular/css/palettes/dark.system.css';
+
+@import "mapbox-gl/dist/mapbox-gl.css";
+
+.content-offset {
+  /* espacio arriba para botones flotantes (3rem) + safe‑area */
+  --padding-top: calc(3rem + var(--ion-safe-area-top));
+  /* espacio abajo para footer (4rem de toolbar + 1rem de margen) */
+  --padding-bottom: calc(4rem + 1rem + var(--ion-safe-area-bottom));
+}
+
+.content-container {
+  height: calc(100vh - 85px - 56px);
+  overflow-y: auto;
+}
+
+// Estilos globales para las cards
+.trip-details-card {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-bottom: 12px;
+  --background: transparent;
+  //  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Aplica al modal raíz */
+ion-modal.example-modal {
+  --width: fit-content;
+  --min-width: 250px;
+  --height: fit-content;
+  --border-radius: 6px;
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+}
+
+/* Si quieres estilizar el contenido del modal */
+ion-modal.example-modal::part(content) {
+  border-radius: 6px;
+  overflow: hidden; /* opcional */
+}
+
+/* Tu contenido dentro del modal */
+ion-modal.example-modal h1 {
+  margin: 20px 20px 10px 20px;
+}
+
+ion-modal.example-modal ion-icon {
+  margin-right: 6px;
+  width: 48px;
+  height: 48px;
+  padding: 4px 0;
+  color: #aaaaaa;
+}
+
+ion-modal.example-modal .wrapper {
+  background: var(--ion-color-light-shade);
+}
+
+
+
+/* Clase base para todos los toasts controlables */
+ion-toast.app-toast {
+  /* Tamaño máximo para no ocupar toda la pantalla */
+  --min-width: 180px;
+  --max-width: 92%;
+  --border-radius: 12px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  --box-shadow: 0 8px 30px rgba(2,6,23,0.28);
+  --font-size: 14px;
+  --line-height: 1.2;
+  --ion-color-base: transparent; /* no interferir */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Dentro del toast (wrapper) la clase toast-message existe en algunas versiones,
+   pero lo más fiable es estilizar el host ion-toast y los botones. */
+
+/* Success */
+ion-toast.app-toast-success {
+  --background: #16a34a; /* verde */
+  --color: #ffffff;
+}
+
+/* Error */
+ion-toast.app-toast-error {
+  --background: #dc2626; /* rojo */
+  --color: #ffffff;
+}
+
+/* Info */
+ion-toast.app-toast-info {
+  --background: #2563eb; /* azul */
+  --color: #ffffff;
+}
+
+/* Warning */
+ion-toast.app-toast-warning {
+  --background: #f59e0b; /* ámbar */
+  --color: #000000;
+}
+
+/* Mejora visual: limitar la anchura del contenido y alinear texto */
+ion-toast.app-toast .app-toast-content {
+  max-width: calc(100% - 48px); /* dejar espacio para icono/btn */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Si quieres agregar un icono por CSS (usando pseudo-elemento) */
+ion-toast.app-toast-success::before,
+ion-toast.app-toast-error::before,
+ion-toast.app-toast-info::before,
+ion-toast.app-toast-warning::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-right: 6px;
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* iconos simples con emoji o un SVG inline (aquí usando background-color) */
+ion-toast.app-toast-success::before { background: rgba(255,255,255,0.12); }
+ion-toast.app-toast-error::before   { background: rgba(0,0,0,0.08); }
+
+/* Botones dentro del toast */
+ion-toast.app-toast .app-toast-button {
+  font-weight: 600;
+  color: inherit;
+  opacity: 0.95;
+}
+
+/* Responsive tweaks — en pantallas grandes hacer toasts menos anchos */
+@media (min-width: 768px) {
+  ion-toast.app-toast {
+    --max-width: 640px;
+    --font-size: 15px;
+  }
+}
+
+/* Dark mode: si usas prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  ion-toast.app-toast {
+    --box-shadow: 0 8px 36px rgba(0,0,0,0.6);
+  }
+  ion-toast.app-toast-warning { --color: #000; } /* quizá contraste distinto */
+}
+
+
+
+/* Modal con fondo/transición "glass" */
+ion-modal.glass-modal {
+  /* quita fondo opaco del modal */
+  --background: transparent;
+  --box-shadow: none;
+  --border-radius: 16px;
+
+  /* velo detrás del modal (lo que oscurece el mapa) */
+  --backdrop-opacity: 0.35;                 /* 0 → 1 */
+  --backdrop-background: rgba(0,0,0,0.6);   /* color del velo */
+
+  /* si usas sheet (breakpoints), controla la altura si quieres */
+  /* --height: auto; */
+}
+
+/* Asegura que el wrapper interno también sea transparente */
+ion-modal.glass-modal::part(content) {
+  background: transparent;
+}
+
+/* Si quieres un leve blur en el “velo” (opcional) */
+ion-modal.glass-modal::part(backdrop) {
+  /* backdrop-filter: blur(2px); */
+}
+
+/* Compatibilidad Ionic antiguos (cuando no existía ::part) */
+ion-modal.glass-modal .modal-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <ion-icon [name]="icon" class="modal-icon"></ion-icon>
+
+  <h2 class="modal-title">{{ title }}</h2>
+  <p class="modal-message">{{ message }}</p>
+
+  <div class="modal-actions">
+    <ion-button expand="block" (click)="close()">
+      {{ buttonText }}
+    </ion-button>
+  </div>
+</div>

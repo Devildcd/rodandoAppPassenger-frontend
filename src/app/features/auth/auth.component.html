@@ -1,0 +1,21 @@
+<ion-content class="auth-background" fullscreen>
+  <div class="overlay" aria-hidden="true"></div>
+  <div class="search-wrapper">
+    <ion-card class="search-card">
+      <ion-card-content>
+
+        <!-- Bienvenida fija -->
+        <div class="welcome-container">
+  <h1 class="welcome-text">Rodando</h1>
+  <img src="/assets/images/logo.png" alt="Logo de la app" class="app-logo" />
+</div>
+<p class="slogan-text">Tu mejor aplicación de viajes</p>
+
+        <!-- Contenido dinámico que vendrá de cada página hija -->
+        <router-outlet></router-outlet>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+

@@ -1,0 +1,205 @@
+<ion-content fullscreen class="gradient-background" color="dark">
+  <app-dinamic-header title="Mi Perfil"></app-dinamic-header>
+
+  <div class="content-wrapper content-container">
+    <div class="options-list">
+      <h6>Opciones Principales</h6>
+      <div class="profile-container">
+        <!-- Foto de perfil -->
+        <ion-card class="profile-card">
+          <!-- <ion-card-header>
+    <ion-card-title>Mi Perfil</ion-card-title>
+  </ion-card-header> -->
+
+          <ion-card-content>
+            <!-- Foto de perfil -->
+            <div class="profile-pic-wrapper">
+              <img
+                src="assets/images/user.png"
+                class="profile-pic"
+                alt="Foto de perfil"
+              />
+            </div>
+
+            <!-- Campos de información -->
+            <ion-list lines="none">
+              <ion-item>
+                <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+                <ion-label>
+                  <h3>Nombre completo</h3>
+                  <p>{{ user?.name }}</p>
+                </ion-label>
+              </ion-item>
+
+              @if(user?.email) {
+                <ion-item>
+                <ion-icon name="mail-outline" slot="start"></ion-icon>
+                <ion-label>
+                  <h3>Correo electrónico</h3>
+                  <p>{{ user?.email }} </p>
+                </ion-label>
+              </ion-item>
+              }@else {
+                 <ion-item>
+                <ion-icon name="call-outline" slot="start"></ion-icon>
+                <ion-label>
+                  <h3>Teléfono</h3>
+                  <p>{{ user?.phoneNumber }}</p>
+                </ion-label>
+              </ion-item>
+              }
+            </ion-list>
+
+            <!-- Botón editar -->
+            <ion-button expand="block" class="btn-confirm">
+              <ion-icon slot="start" name="create-outline"></ion-icon>
+              Editar Perfil
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+    <div class="options-list">
+      <h6>Configuración de la Cuenta</h6>
+      <ion-list>
+        <!-- Seguridad de la Cuenta -->
+        <ion-item button lines="none" detail="false" class="option-item">
+          <span class="icon-circle">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+          </span>
+          <div class="item-content">
+            <ion-label>Cambiar Contraseña</ion-label>
+            <div class="option-description">
+              Actualiza tu contraseña de acceso
+            </div>
+          </div>
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+
+        <!-- <ion-item button lines="none" detail="false" class="option-item">
+      <span class="icon-circle">
+        <ion-icon name="shield-checkmark-outline"></ion-icon>
+      </span>
+      <div class="item-content">
+        <ion-label>Autenticación en Dos Pasos</ion-label>
+        <div class="option-description">Protege tu cuenta con verificación adicional</div>
+      </div>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item> -->
+
+        <ion-item button lines="none" detail="false" class="option-item">
+          <span class="icon-circle">
+            <ion-icon name="phone-portrait-outline"></ion-icon>
+          </span>
+          <div class="item-content">
+            <ion-label>Dispositivos Conectados</ion-label>
+            <div class="option-description">Gestiona las sesiones activas</div>
+          </div>
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+
+        <ion-item
+          button
+          lines="none"
+          detail="false"
+          class="option-item"
+          (click)="onLogout()"
+          [class.disabled-item]="authStore.loading()"
+        >
+          <span class="icon-circle">
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+          </span>
+          <div class="item-content">
+            <ion-label>Cerrar Sesion</ion-label>
+            <div class="option-description">
+              Protege tu cuenta con verificación adicional
+            </div>
+          </div>
+          @if(!authStore.loading()) {
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+          }@else {
+          <ion-spinner slot="end" name="crescent" style="width:20px;height:20px;"></ion-spinner>
+          }
+
+        </ion-item>
+      </ion-list>
+
+      <h6>Preferencias de Viaje</h6>
+      <ion-list lines="none">
+        <!-- Otra ubicación -->
+        <ion-item button lines="none" detail="false" class="option-item">
+          <span class="icon-circle">
+            <ion-icon name="location-outline"></ion-icon>
+          </span>
+          <div class="item-content">
+            <ion-label>Agregar otra ubicación</ion-label>
+            <div class="trip-details">Guardar dirección frecuente</div>
+          </div>
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+
+        <!-- Preferencias de viaje -->
+        <ion-item button lines="none" detail="false" class="option-item">
+          <span class="icon-circle">
+            <ion-icon name="car-outline"></ion-icon>
+          </span>
+          <div class="item-content">
+            <ion-label>Preferencias de Vehículo</ion-label>
+            <div class="trip-details">Selecciona opciones predefinidas</div>
+          </div>
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+      </ion-list>
+
+      <h6>Notificaciones</h6>
+      <ion-list>
+        <ion-item button lines="none" detail="false" class="option-item">
+          <span class="icon-circle">
+            <ion-icon name="notifications-outline"></ion-icon>
+          </span>
+          <div class="item-content">
+            <ion-label>Preferencias de Notificaciones</ion-label>
+            <div class="option-description">
+              Elige cómo y qué notificaciones recibir
+            </div>
+          </div>
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+      </ion-list>
+
+      <h6>Privacidad</h6>
+      <ion-list>
+        <ion-item button lines="none" detail="false" class="option-item">
+          <span class="icon-circle">
+            <ion-icon name="lock-open-outline"></ion-icon>
+          </span>
+          <div class="item-content">
+            <ion-label>Control de Datos</ion-label>
+            <div class="option-description">
+              Gestiona cómo usamos tu información
+            </div>
+          </div>
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+
+        <ion-item button lines="none" detail="false" class="option-item">
+          <span class="icon-circle danger">
+            <ion-icon name="trash-outline"></ion-icon>
+          </span>
+          <div class="item-content">
+            <ion-label>Eliminar Cuenta</ion-label>
+            <div class="option-description">
+              Eliminar permanentemente tu cuenta
+            </div>
+          </div>
+          <ion-icon
+            slot="end"
+            name="chevron-forward-outline"
+            class="danger"
+          ></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
