@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   // googleMapsApiKey: 'AIzaSyB7Gysu0aXgX5RT1AwTgVkOIEjAPsDE0Ik&libraries=places',
   apiUrl: 'http://localhost:3000/api',
   appAudience: 'passenger_app',
@@ -12,7 +12,7 @@ export const environment = {
   accessToken: 'pk.eyJ1Ijoicm9kYW5kb2N1YmEiLCJhIjoiY21lYzZtMWF0MWJoaDJsb2YxNG56N2NmYiJ9.o5oPXGNXcut8PE0O7CG-VA'
 },
  debug: true,                     // poner en false en prod
-  debugTags: ['DA', 'HTTP', 'LOC', 'PL', 'PAX'] 
+  debugTags: ['DA', 'HTTP', 'LOC', 'PL', 'PAX']
 };
 
 /*
